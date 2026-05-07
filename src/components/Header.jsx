@@ -14,17 +14,9 @@ const NAV = [
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { itemCount, openCart } = useCart();
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -32,20 +24,20 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/85 backdrop-blur-xl border-b border-black/5 shadow-sm'
-          : 'bg-transparent'
-      }`}
+      className="fixed inset-x-0 top-0 z-40 bg-white border-b border-black/5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[68px] items-center justify-between">
+        <div className="flex h-[72px] items-center justify-between">
           {/* Logo only — never write "Pescao" next to the logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Pescao home">
+          <Link
+            to="/"
+            className="flex items-center gap-2 shrink-0"
+            aria-label="Pescao home"
+          >
             <img
               src={LOGO_SRC}
               alt="Pescao Restaurant & Bar"
-              className="h-9 sm:h-10 w-auto select-none"
+              className="h-10 sm:h-11 w-auto select-none"
               draggable="false"
             />
           </Link>
@@ -98,7 +90,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="lg:hidden border-t border-black/5 bg-white/95 backdrop-blur-xl"
+            className="lg:hidden border-t border-black/5 bg-white"
           >
             <nav className="px-6 py-5 grid gap-1">
               {NAV.map((item) => (
