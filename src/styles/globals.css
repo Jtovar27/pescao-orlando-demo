@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand palette derived from PESCAO logo (deep marine blue) */
+  --brand-primary: #1d4f8b;       /* Logo blue */
+  --brand-secondary: #0f2c4f;     /* Deeper blue */
+  --brand-accent: #d97a3c;        /* Caribbean coral/warm */
+  --brand-dark: #0a1d35;          /* Almost black-blue */
+  --brand-deep: #061327;          /* Hero overlay */
+  --brand-cream: #faf6ef;         /* Warm cream background */
+  --brand-muted: #6b7a8f;         /* Muted blue-grey text */
+  --brand-border: #e6dfd1;        /* Sand border */
+  --brand-card: #ffffff;
+  --brand-gold: #c4923c;          /* Caribbean gold */
+  --brand-sea: #2c7da0;           /* Mid sea blue */
+  --brand-coral: #e07856;
+  --brand-sand: #efe6d3;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--brand-dark);
+  background: var(--brand-cream);
+  font-feature-settings: 'cv11', 'ss01';
+  overflow-x: hidden;
+}
+
+/* Tabular nums for prices */
+.num,
+.price {
+  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+  letter-spacing: -0.01em;
+}
+
+/* Display headings */
+.display {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.04;
+}
+
+.display-italic {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.fraunces {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Premium underline accent */
+.brand-accent-line::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-top: 14px;
+  background: var(--brand-accent);
+}
+
+/* Smooth scroll containers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Soft glass card */
+.glass-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border: 1px solid rgba(15,28,52,0.06);
+}
+
+/* Pretty selection */
+::selection {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+/* Mobile safe area */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-top { padding-top: env(safe-area-inset-top); }
+
+/* Hide focus ring unless keyboard */
+*:focus { outline: none; }
+*:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Premium button reset */
+button { font-family: inherit; }
+
+/* Hero gradient overlay */
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(6,19,39,0.05) 0%,
+    rgba(6,19,39,0.20) 35%,
+    rgba(6,19,39,0.55) 70%,
+    rgba(6,19,39,0.85) 100%
+  );
+}
+
+.hero-side-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(6,19,39,0.78) 0%,
+    rgba(6,19,39,0.55) 45%,
+    rgba(6,19,39,0.10) 80%,
+    rgba(6,19,39,0) 100%
+  );
+}
+
+/* Section divider wave */
+.section-fade-top {
+  background: linear-gradient(180deg, var(--brand-cream) 0%, transparent 100%);
+}
+
+/* Card hover lift */
+.lift-on-hover {
+  transition: transform 280ms cubic-bezier(.22,1,.36,1),
+              box-shadow 280ms cubic-bezier(.22,1,.36,1);
+}
+.lift-on-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -16px rgba(15,28,52,0.22),
+              0 24px 48px -28px rgba(15,28,52,0.18);
+}
+
+/* Decorative dotted line */
+.dotted-line {
+  background-image: linear-gradient(to right, rgba(15,28,52,0.18) 33%, transparent 0%);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+/* Brand chip */
+.brand-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Premium scrollbar (desktop) */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(15,28,52,0.18);
+    border-radius: 8px;
+    border: 2px solid var(--brand-cream);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(15,28,52,0.32); }
+}
+
+/* No-image placeholder pattern */
+.placeholder-pattern {
+  background:
+    radial-gradient(circle at 20% 25%, rgba(29,79,139,0.10) 0px, transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(217,122,60,0.10) 0px, transparent 35%),
+    linear-gradient(135deg, var(--brand-sand) 0%, var(--brand-cream) 100%);
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  gap: 56px;
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
